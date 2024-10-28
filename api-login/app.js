@@ -3,7 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const cors = require('cors')
+
 
 
 const app = express()
@@ -50,7 +50,7 @@ function checkToken(req, res, next) {
 
 
 app.post("/auth/register", async (req, res) => {
-    const { name, email, password, confirmpassword } = req.body;
+    const { name, email, password, confirmPassword } = req.body;
   
     // validations
     if (!name) {
@@ -66,7 +66,7 @@ app.post("/auth/register", async (req, res) => {
         return res.status(422).json({ msg: "A senha é obrigatório!" });
       }
 
-      if(password !== confirmpassword) {
+      if(password !== confirmPassword) {
         return res.status(422).json({ msg: 'As senhas não conferem!' })
       }
 
